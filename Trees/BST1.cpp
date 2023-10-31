@@ -72,6 +72,58 @@ void getData(Node* &root){
         cin>>data;
     }
 }
+Node* minVal(Node* root){
+    Node* temp = root;
+    while(temp->left!=NULL){
+        temp = temp->left;
+    }
+    return temp;
+}
+
+Node* maxVal(Node* root){
+    Node* temp = root;
+    while(temp->right!=NULL){
+        temp = temp->right;
+    }
+    return temp;
+}
+Node* deleteBst(Node* root,int val){
+    if(root == NULL){
+        return root;
+    }
+    if(root->data == val){
+        //0 child
+        if(root->left==NULL && root->right==NULL){
+            delete root;
+            return NULL;
+        }
+
+        //1 child
+        //left
+        if(root->left!=NULL && root->right==NULL){
+            Node* temp = root->left;
+            delete root;
+            return temp;
+        }
+        //right
+        if(root->left==NULL && root->right!=NULL){
+            Node* temp = root->right;
+            delete root;
+            return temp;
+        }
+
+        //2 child
+        if()
+    }
+    else if(root->data>val){
+        root->left = deleteBst(root->left,val);
+        return root;
+    }
+    else{
+        root->right = deleteBst(root->right,val);
+        return root;
+    }
+}
 
 void inorder(Node* root){
     //lnr
@@ -109,9 +161,11 @@ int main(){
     Node* root = NULL;
     cout<<"Enter Data to Build BST: ";
     getData(root);
-    // cout<<"Your BST in Level Order: "<<endl;
-    // levelOrderTreverse(root);
+    cout<<"Your BST in Level Order: "<<endl;
+    levelOrderTreverse(root);
     // 10 8 21 7 27 5 4 3 -1 
+    // 8 3 1 6 4 7 10 14 13
+    cout<<endl<<"\n";
     cout<<"Inorder: ";
     inorder(root);
     cout<<endl;
@@ -122,6 +176,12 @@ int main(){
     
     cout<<"Postorder: ";
     postorder(root);
+    cout<<"\n\n";
+    cout<<"min value :"<<minVal(root)->data;
+    cout<<endl;
+    cout<<"max value: "<<maxVal(root)->data;
+//100 50 25 70 60 110 120 115
+ 
     return 0;
 
 }
