@@ -113,7 +113,7 @@ Node* deleteBst(Node* root,int val){
         }
 
         //2 child
-        if()
+        // if()
     }
     else if(root->data>val){
         root->left = deleteBst(root->left,val);

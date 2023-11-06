@@ -46,10 +46,10 @@ bool search(Node* root,int x){
         return true;
     }
     if(root->data > x){
-        return search(root->right,x);
+        return search(root->left,x);
     }
     else{
-        return search(root->left,x);
+        return search(root->right,x);
     }
 }
 void inorder(Node* root){
